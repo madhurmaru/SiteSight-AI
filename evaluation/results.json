@@ -1,0 +1,361 @@
+{
+  "dataset": "Construction Site Safety test split",
+  "source": "https://huggingface.co/datasets/keremberke/construction-safety-object-detection",
+  "license": "CC BY 4.0",
+  "size": 5,
+  "threshold": 0.5,
+  "classes": [
+    "worker",
+    "helmet",
+    "vest"
+  ],
+  "method": "Human-reviewed per-image object counts; count discrepancies only. Overprediction and underprediction are not false-positive/false-negative classifications because boxes are not matched. This is not mAP, precision, recall, or a production-readiness evaluation.",
+  "model": "PPE Compliance YOLOv8n + YOLOv8n COCO person",
+  "version": "ppe-a427495+coco-v8.3.0",
+  "provenance": {
+    "source": "innovativeskipper/ppe-compliance-yolov8 + Ultralytics YOLOv8n COCO",
+    "license": "MIT model card; Construction Site Safety v27 training data CC BY 4.0",
+    "runtimeLicense": "Ultralytics AGPL-3.0 or Enterprise",
+    "ppeWeightsSha256": "6db032361801e431912b6df1b20cca8b7d56a3226082240fc4257c6b2703e61c",
+    "workerWeightsSha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+    "classMap": {
+      "Hardhat": "helmet",
+      "Safety Vest": "vest",
+      "NO-Hardhat": "no-helmet",
+      "NO-Safety Vest": "no-vest"
+    },
+    "association": "spatial-v3"
+  },
+  "totals": {
+    "worker": {
+      "expected": 18,
+      "predicted": 16,
+      "countOverprediction": 0,
+      "countUnderprediction": 2
+    },
+    "helmet": {
+      "expected": 13,
+      "predicted": 15,
+      "countOverprediction": 2,
+      "countUnderprediction": 0
+    },
+    "vest": {
+      "expected": 7,
+      "predicted": 7,
+      "countOverprediction": 1,
+      "countUnderprediction": 1
+    }
+  },
+  "images": [
+    {
+      "file": "source/images/test-02.jpg",
+      "scenario": [
+        "visible PPE",
+        "snow",
+        "edge clipping"
+      ],
+      "counts": {
+        "worker": {
+          "expected": 1,
+          "predicted": 1,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "helmet": {
+          "expected": 1,
+          "predicted": 1,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "vest": {
+          "expected": 1,
+          "predicted": 0,
+          "countOverprediction": 0,
+          "countUnderprediction": 1
+        }
+      },
+      "assessments": [
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        }
+      ]
+    },
+    {
+      "file": "source/images/test-11.jpg",
+      "scenario": [
+        "distance",
+        "crowding",
+        "mixed helmet use"
+      ],
+      "counts": {
+        "worker": {
+          "expected": 5,
+          "predicted": 5,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "helmet": {
+          "expected": 4,
+          "predicted": 6,
+          "countOverprediction": 2,
+          "countUnderprediction": 0
+        },
+        "vest": {
+          "expected": 0,
+          "predicted": 1,
+          "countOverprediction": 1,
+          "countUnderprediction": 0
+        }
+      },
+      "assessments": [
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "present",
+          "title": "Helmet appears present"
+        },
+        {
+          "kind": "vest",
+          "assessment": "missing",
+          "title": "Possible missing vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "present",
+          "title": "Helmet appears present"
+        },
+        {
+          "kind": "vest",
+          "assessment": "missing",
+          "title": "Possible missing vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "present",
+          "title": "Helmet appears present"
+        },
+        {
+          "kind": "vest",
+          "assessment": "present",
+          "title": "Vest appears present"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "present",
+          "title": "Helmet appears present"
+        },
+        {
+          "kind": "vest",
+          "assessment": "missing",
+          "title": "Possible missing vest"
+        }
+      ]
+    },
+    {
+      "file": "source/images/test-18.jpg",
+      "scenario": [
+        "possible missing PPE",
+        "poor lighting",
+        "partial occlusion"
+      ],
+      "counts": {
+        "worker": {
+          "expected": 5,
+          "predicted": 3,
+          "countOverprediction": 0,
+          "countUnderprediction": 2
+        },
+        "helmet": {
+          "expected": 1,
+          "predicted": 1,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "vest": {
+          "expected": 0,
+          "predicted": 0,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        }
+      },
+      "assessments": [
+        {
+          "kind": "helmet",
+          "assessment": "missing",
+          "title": "Possible missing helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "missing",
+          "title": "Possible missing vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "missing",
+          "title": "Possible missing helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "missing",
+          "title": "Possible missing vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "present",
+          "title": "Helmet appears present"
+        },
+        {
+          "kind": "vest",
+          "assessment": "missing",
+          "title": "Possible missing vest"
+        }
+      ]
+    },
+    {
+      "file": "source/images/test-26.jpg",
+      "scenario": [
+        "visible helmet",
+        "missing vest",
+        "edge clipping"
+      ],
+      "counts": {
+        "worker": {
+          "expected": 1,
+          "predicted": 1,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "helmet": {
+          "expected": 1,
+          "predicted": 1,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "vest": {
+          "expected": 0,
+          "predicted": 0,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        }
+      },
+      "assessments": [
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        }
+      ]
+    },
+    {
+      "file": "source/images/test-31.jpg",
+      "scenario": [
+        "visible PPE",
+        "crowding",
+        "occlusion"
+      ],
+      "counts": {
+        "worker": {
+          "expected": 6,
+          "predicted": 6,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "helmet": {
+          "expected": 6,
+          "predicted": 6,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        },
+        "vest": {
+          "expected": 6,
+          "predicted": 6,
+          "countOverprediction": 0,
+          "countUnderprediction": 0
+        }
+      },
+      "assessments": [
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "present",
+          "title": "Helmet appears present"
+        },
+        {
+          "kind": "vest",
+          "assessment": "present",
+          "title": "Vest appears present"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        },
+        {
+          "kind": "helmet",
+          "assessment": "unknown",
+          "title": "Unable to assess helmet"
+        },
+        {
+          "kind": "vest",
+          "assessment": "unknown",
+          "title": "Unable to assess vest"
+        }
+      ]
+    }
+  ]
+}

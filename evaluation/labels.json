@@ -1,0 +1,34 @@
+{
+  "dataset": "Construction Site Safety test split",
+  "source": "https://huggingface.co/datasets/keremberke/construction-safety-object-detection",
+  "license": "CC BY 4.0",
+  "threshold": 0.5,
+  "classes": ["worker", "helmet", "vest"],
+  "images": [
+    {
+      "file": "source/images/test-02.jpg",
+      "scenario": ["visible PPE", "snow", "edge clipping"],
+      "expected": { "worker": 1, "helmet": 1, "vest": 1 }
+    },
+    {
+      "file": "source/images/test-11.jpg",
+      "scenario": ["distance", "crowding", "mixed helmet use"],
+      "expected": { "worker": 5, "helmet": 4, "vest": 0 }
+    },
+    {
+      "file": "source/images/test-18.jpg",
+      "scenario": ["possible missing PPE", "poor lighting", "partial occlusion"],
+      "expected": { "worker": 5, "helmet": 1, "vest": 0 }
+    },
+    {
+      "file": "source/images/test-26.jpg",
+      "scenario": ["visible helmet", "missing vest", "edge clipping"],
+      "expected": { "worker": 1, "helmet": 1, "vest": 0 }
+    },
+    {
+      "file": "source/images/test-31.jpg",
+      "scenario": ["visible PPE", "crowding", "occlusion"],
+      "expected": { "worker": 6, "helmet": 6, "vest": 6 }
+    }
+  ]
+}

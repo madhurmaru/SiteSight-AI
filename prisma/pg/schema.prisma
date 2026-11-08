@@ -1,0 +1,242 @@
+generator client {
+ provider = "prisma-client-js"
+}
+datasource db {
+ provider = "postgresql"
+ url = env("DATABASE_URL")
+}
+model User {
+ id String @id @default(cuid())
+ email String @unique
+ name String
+ passwordHash String
+ createdAt DateTime @default(now())
+ sessions Session[]
+ memberships Membership[]
+}
+model Session {
+ id String @id
+ userId String
+ user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ expiresAt DateTime
+ @@index([userId])
+}
+model Project {
+ id String @id @default(cuid())
+ name String
+ description String
+ location String
+ startDate DateTime
+ targetDate DateTime
+ status String @default("active")
+ threshold Float @default(0.5)
+ createdAt DateTime @default(now())
+ memberships Membership[]
+ zones Zone[]
+ milestones Milestone[]
+ inspections Inspection[]
+ reports Report[]
+ audits AuditEvent[]
+ notifications Notification[]
+}
+model Membership {
+ id String @id @default(cuid())
+ userId String
+ projectId String
+ role String
+ user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ @@unique([userId, projectId])
+}
+model Zone {
+ id String @id @default(cuid())
+ projectId String
+ name String
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ inspections Inspection[]
+ milestones Milestone[]
+ @@unique([projectId, name])
+}
+model Milestone {
+ id String @id @default(cuid())
+ projectId String
+ zoneId String
+ name String
+ weight Float
+ completion Float @default(0)
+ startDate DateTime
+ targetDate DateTime
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ zone Zone @relation(fields: [zoneId], references: [id])
+ updates ProgressUpdate[]
+ @@index([projectId])
+}
+model ProgressUpdate {
+ id String @id @default(cuid())
+ milestoneId String
+ previous Float
+ completion Float
+ reason String
+ authorId String
+ mediaId String
+ createdAt DateTime @default(now())
+ milestone Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+ media Media @relation(fields: [mediaId], references: [id])
+ @@index([milestoneId, createdAt])
+}
+model Inspection {
+ id String @id @default(cuid())
+ projectId String
+ zoneId String
+ title String
+ captureTime DateTime
+ uploadedAt DateTime @default(now())
+ viewpoint String
+ notes String
+ authorId String
+ status String @default("queued")
+ humanObservation String @default("")
+ reviewedAt DateTime?
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ zone Zone @relation(fields: [zoneId], references: [id])
+ media Media[]
+ job AnalysisJob?
+ findings Finding[]
+ report Report?
+ @@index([projectId, captureTime])
+ @@index([projectId, status])
+}
+model Media {
+ id String @id @default(cuid())
+ inspectionId String
+ key String
+ mime String
+ width Int
+ height Int
+ timestamp Float?
+ sourceId String?
+ metadata String @default("{}")
+ fixture Boolean @default(false)
+ inspection Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+ detections Detection[]
+ findings Finding[]
+ progressUpdates ProgressUpdate[]
+ evidenceLinks EvidenceLink[]
+ @@index([inspectionId])
+}
+model AnalysisJob {
+ id String @id @default(cuid())
+ inspectionId String @unique
+ status String @default("queued")
+ attempts Int @default(0)
+ error String?
+ model String?
+ version String?
+ provenance String?
+ leaseAt DateTime?
+ createdAt DateTime @default(now())
+ updatedAt DateTime @updatedAt
+ inspection Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+ @@index([status, createdAt])
+}
+model Detection {
+ id String @id
+ mediaId String
+ class String
+ rawClass String?
+ confidence Float
+ box String
+ workerId String?
+ model String
+ version String
+ media Media @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+ @@index([mediaId])
+}
+model Finding {
+ id String @id
+ inspectionId String
+ mediaId String
+ kind String
+ assessment String
+ title String
+ verification String @default("proposed")
+ resolution String @default("open")
+ workerId String?
+ original String
+ correction String?
+ assignedTo String?
+ notes String @default("")
+ createdAt DateTime @default(now())
+ inspection Inspection @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+ media Media @relation(fields: [mediaId], references: [id], onDelete: Cascade)
+ decisions ReviewDecision[]
+ @@index([inspectionId, verification, resolution])
+}
+model ReviewDecision {
+ id String @id @default(cuid())
+ findingId String
+ authorId String
+ action String
+ previous String
+ comment String
+ createdAt DateTime @default(now())
+ finding Finding @relation(fields: [findingId], references: [id], onDelete: Cascade)
+}
+model EvidenceLink {
+ id String @id @default(cuid())
+ mediaId String
+ reportVersionId String
+ media Media @relation(fields: [mediaId], references: [id])
+ reportVersion ReportVersion @relation(fields: [reportVersionId], references: [id], onDelete: Cascade)
+ @@unique([mediaId, reportVersionId])
+}
+model Report {
+ id String @id @default(cuid())
+ projectId String
+ title String
+ type String
+ authorId String
+ inspectionId String? @unique
+ createdAt DateTime @default(now())
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ inspection Inspection? @relation(fields: [inspectionId], references: [id], onDelete: Cascade)
+ versions ReportVersion[]
+ @@index([projectId, createdAt])
+}
+model ReportVersion {
+ id String @id @default(cuid())
+ reportId String
+ number Int
+ status String @default("draft")
+ content String
+ model String
+ promptVersion String
+ sourceRecordVersions String @default("[]")
+ approvedBy String?
+ approvedAt DateTime?
+ createdAt DateTime @default(now())
+ report Report @relation(fields: [reportId], references: [id], onDelete: Cascade)
+ evidenceLinks EvidenceLink[]
+ @@unique([reportId, number])
+}
+model Notification {
+ id String @id @default(cuid())
+ projectId String
+ message String
+ createdAt DateTime @default(now())
+ read Boolean @default(false)
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ @@index([projectId, createdAt])
+}
+model AuditEvent {
+ id String @id @default(cuid())
+ projectId String
+ actorId String
+ action String
+ entityId String
+ previous String
+ next String
+ createdAt DateTime @default(now())
+ project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+ @@index([projectId, createdAt])
+}

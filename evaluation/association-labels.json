@@ -1,0 +1,20 @@
+{
+  "iouThreshold": 0.5,
+  "method": "Human-reviewed worker regions and expected conservative PPE assessment outcomes. This evaluates worker matching and association outcomes separately from object detection precision/recall.",
+  "images": [
+    {
+      "file": "source/images/test-18.jpg",
+      "workers": [
+        { "box": [0.08, 0.37, 0.212, 0.602], "helmet": "missing", "vest": "missing" },
+        { "box": [0.693, 0.131, 0.098, 0.612], "helmet": "unknown", "vest": "unknown" },
+        { "box": [0.145, 0.019, 0.208, 0.444], "helmet": "present", "vest": "missing" }
+      ]
+    },
+    {
+      "file": "source/images/test-26.jpg",
+      "workers": [
+        { "box": [0.715, 0.406, 0.285, 0.594], "helmet": "unknown", "vest": "unknown" }
+      ]
+    }
+  ]
+}

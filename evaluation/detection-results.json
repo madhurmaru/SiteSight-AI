@@ -1,0 +1,498 @@
+{
+  "dataset": "Construction Site Safety test split",
+  "license": "CC BY 4.0",
+  "images": 9,
+  "confidenceThreshold": 0.5,
+  "iouThreshold": 0.5,
+  "matching": "Class-aware, confidence-ordered, one-to-one matching to the highest-IoU unmatched ground-truth box. Precision and recall are calculated from these matches. AP and mAP are not calculated.",
+  "metrics": {
+    "worker": {
+      "truePositives": 4,
+      "falsePositives": 15,
+      "falseNegatives": 0,
+      "precision": 0.2105,
+      "recall": 1.0
+    },
+    "helmet": {
+      "truePositives": 10,
+      "falsePositives": 5,
+      "falseNegatives": 2,
+      "precision": 0.6667,
+      "recall": 0.8333
+    },
+    "vest": {
+      "truePositives": 0,
+      "falsePositives": 7,
+      "falseNegatives": 1,
+      "precision": 0.0,
+      "recall": 0.0
+    },
+    "no-helmet": {
+      "truePositives": 3,
+      "falsePositives": 1,
+      "falseNegatives": 4,
+      "precision": 0.75,
+      "recall": 0.4286
+    },
+    "no-vest": {
+      "truePositives": 2,
+      "falsePositives": 8,
+      "falseNegatives": 1,
+      "precision": 0.2,
+      "recall": 0.6667
+    }
+  },
+  "perImage": [
+    {
+      "file": "source/images/test-02.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.6408
+          ]
+        },
+        "helmet": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.854
+          ]
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 1,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        }
+      }
+    },
+    {
+      "file": "source/images/test-11.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 0,
+          "falsePositives": 5,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "helmet": {
+          "truePositives": 2,
+          "falsePositives": 4,
+          "falseNegatives": 2,
+          "matchedIoU": [
+            0.5486,
+            0.5122
+          ]
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 1,
+          "matchedIoU": []
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 4,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        }
+      }
+    },
+    {
+      "file": "source/images/test-16.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.9849
+          ]
+        },
+        "helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 1,
+          "matchedIoU": [
+            0.8676
+          ]
+        },
+        "no-vest": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.8957
+          ]
+        }
+      }
+    },
+    {
+      "file": "source/images/test-18.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 0,
+          "falsePositives": 3,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "helmet": {
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.8889
+          ]
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 2,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        }
+      }
+    },
+    {
+      "file": "source/images/test-19.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        }
+      }
+    },
+    {
+      "file": "source/images/test-23.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 1,
+          "matchedIoU": []
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 1,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        }
+      }
+    },
+    {
+      "file": "source/images/test-26.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.9135
+          ]
+        },
+        "helmet": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.9129
+          ]
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-vest": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.6543
+          ]
+        }
+      }
+    },
+    {
+      "file": "source/images/test-28.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.986
+          ]
+        },
+        "helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 1,
+          "falsePositives": 0,
+          "falseNegatives": 1,
+          "matchedIoU": [
+            0.815
+          ]
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 1,
+          "matchedIoU": []
+        }
+      }
+    },
+    {
+      "file": "source/images/test-31.jpg",
+      "classes": {
+        "worker": {
+          "truePositives": 0,
+          "falsePositives": 6,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "helmet": {
+          "truePositives": 6,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": [
+            0.7413,
+            0.7308,
+            0.639,
+            0.6706,
+            0.5768,
+            0.5906
+          ]
+        },
+        "vest": {
+          "truePositives": 0,
+          "falsePositives": 6,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-helmet": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        },
+        "no-vest": {
+          "truePositives": 0,
+          "falsePositives": 0,
+          "falseNegatives": 0,
+          "matchedIoU": []
+        }
+      }
+    }
+  ],
+  "association": {
+    "method": "Human-reviewed worker regions and expected conservative PPE assessment outcomes. This evaluates worker matching and association outcomes separately from object detection precision/recall.",
+    "workerLabels": 4,
+    "matchedWorkers": 4,
+    "componentLabels": 8,
+    "correctComponentOutcomes": 6,
+    "positiveEquipmentLinks": 1,
+    "correctPositiveEquipmentLinks": 1,
+    "details": [
+      {
+        "file": "source/images/test-18.jpg",
+        "workers": [
+          {
+            "workerIoU": 0.9958,
+            "matched": true,
+            "outcomes": {
+              "helmet": {
+                "expected": "missing",
+                "actual": "missing",
+                "correct": true
+              },
+              "vest": {
+                "expected": "missing",
+                "actual": "missing",
+                "correct": true
+              }
+            }
+          },
+          {
+            "workerIoU": 0.9936,
+            "matched": true,
+            "outcomes": {
+              "helmet": {
+                "expected": "unknown",
+                "actual": "missing",
+                "correct": false
+              },
+              "vest": {
+                "expected": "unknown",
+                "actual": "missing",
+                "correct": false
+              }
+            }
+          },
+          {
+            "workerIoU": 0.9989,
+            "matched": true,
+            "outcomes": {
+              "helmet": {
+                "expected": "present",
+                "actual": "present",
+                "correct": true
+              },
+              "vest": {
+                "expected": "missing",
+                "actual": "missing",
+                "correct": true
+              }
+            }
+          }
+        ]
+      },
+      {
+        "file": "source/images/test-26.jpg",
+        "workers": [
+          {
+            "workerIoU": 0.9148,
+            "matched": true,
+            "outcomes": {
+              "helmet": {
+                "expected": "unknown",
+                "actual": "unknown",
+                "correct": true
+              },
+              "vest": {
+                "expected": "unknown",
+                "actual": "unknown",
+                "correct": true
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "workerMatchRate": 1.0,
+    "componentOutcomeAccuracy": 0.75,
+    "positiveEquipmentLinkAccuracy": 1.0
+  },
+  "model": "PPE Compliance YOLOv8n + YOLOv8n COCO person",
+  "version": "ppe-a427495+coco-v8.3.0",
+  "provenance": {
+    "source": "innovativeskipper/ppe-compliance-yolov8 + Ultralytics YOLOv8n COCO",
+    "license": "MIT model card; Construction Site Safety v27 training data CC BY 4.0",
+    "runtimeLicense": "Ultralytics AGPL-3.0 or Enterprise",
+    "ppeWeightsSha256": "6db032361801e431912b6df1b20cca8b7d56a3226082240fc4257c6b2703e61c",
+    "workerWeightsSha256": "f59b3d833e2ff32e194b5bb8e08d211dc7c5bdf144b90d2c8412c47ccfc83b36",
+    "classMap": {
+      "Hardhat": "helmet",
+      "Safety Vest": "vest",
+      "NO-Hardhat": "no-helmet",
+      "NO-Safety Vest": "no-vest"
+    },
+    "association": "spatial-v3"
+  }
+}

@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: sitesight
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD}
+      POSTGRES_DB: sitesight
+    ports: ["127.0.0.1:5432:5432"]
+    volumes: ["postgres:/var/lib/postgresql/data"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sitesight"]
+      interval: 5s
+      retries: 10
+  minio:
+    image: minio/minio:RELEASE.2025-04-22T22-12-26Z
+    command: server /data --console-address :9001
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER:?Set MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD:?Set MINIO_ROOT_PASSWORD}
+    ports: ["127.0.0.1:9000:9000", "127.0.0.1:9001:9001"]
+    volumes: ["objects:/data"]
+  inference:
+    build: ./worker
+    profiles: [connected]
+    env_file: .env
+    environment:
+      STORAGE_ALLOWED_HOSTS: minio
+    volumes: ["./weights:/weights:ro"]
+    ports: ["127.0.0.1:8001:8001"]
+  web:
+    build: .
+    profiles: [connected]
+    env_file: .env
+    environment:
+      APP_MODE: connected
+      DATABASE_URL: postgresql://sitesight:${POSTGRES_PASSWORD}@postgres:5432/sitesight
+      S3_ENDPOINT: http://minio:9000
+      INFERENCE_URL: http://inference:8001
+    command:
+      [
+        "sh",
+        "-c",
+        "npx prisma migrate deploy --schema prisma/pg/schema.prisma && npm run start",
+      ]
+    depends_on:
+      postgres: { condition: service_healthy }
+    ports: ["127.0.0.1:3001:3001"]
+  queue:
+    build: .
+    profiles: [connected]
+    env_file: .env
+    environment:
+      APP_MODE: connected
+      DATABASE_URL: postgresql://sitesight:${POSTGRES_PASSWORD}@postgres:5432/sitesight
+      S3_ENDPOINT: http://minio:9000
+      INFERENCE_URL: http://inference:8001
+    command: ["node", "--import", "tsx", "scripts/worker.ts"]
+    depends_on: [web]
+volumes:
+  postgres:
+  objects:
